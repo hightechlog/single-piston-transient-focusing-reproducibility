@@ -1,0 +1,72 @@
+{
+  "description": "Canonical numerical values from the figure-generation pipeline used for the paper.",
+  "comparison": {
+    "rtol": 1e-10,
+    "atol": 1e-10
+  },
+  "frequency_band_hz": [50000.0, 150000.0],
+  "center_frequency_hz": 100000.0,
+  "quadrature": {"n_rho": 32, "n_phi": 64},
+  "full_grid": {
+    "n_r": 61,
+    "n_z": 176,
+    "r_min_m": 0.0,
+    "r_max_m": 0.06,
+    "z_min_m": 0.005,
+    "z_max_m": 0.18000000000000002
+  },
+  "temporal_peak_reconstruction": {
+    "nfft": 8192,
+    "time_step_s": 3.1127929687500013e-07,
+    "period_s": 0.002550000000000001,
+    "oversample_requested": 8.0
+  },
+  "chosen_scalar_delays_s": {
+    "20mm": -1.1015890476550126e-07,
+    "50mm": 3.619881357172189e-07,
+    "100mm": 2.158054760977254e-07,
+    "150mm": 2.704627669472989e-06
+  },
+  "nominal_peak_fields": {
+    "cw": {
+      "target_amplitude": 1.8611948822408695,
+      "global_peak_amplitude": 1.999531911452885,
+      "global_peak_r_m": 0.0,
+      "global_peak_z_m": 0.044,
+      "global_peak_over_target_db": 0.6227297991002805
+    },
+    "best_delay": {
+      "target_amplitude": 542.4504653973386,
+      "global_peak_amplitude": 796.5645912946864,
+      "global_peak_r_m": 0.015,
+      "global_peak_z_m": 0.095,
+      "global_peak_over_target_db": 3.3372182240989456
+    },
+    "phase": {
+      "target_amplitude": 718.9337251720596,
+      "global_peak_amplitude": 740.1486054306582,
+      "global_peak_r_m": 0.0,
+      "global_peak_z_m": 0.054,
+      "global_peak_over_target_db": 0.2526013670230244
+    },
+    "mf": {
+      "target_amplitude": 822.4129313546455,
+      "global_peak_amplitude": 835.4150704325516,
+      "global_peak_r_m": 0.0,
+      "global_peak_z_m": 0.053,
+      "global_peak_over_target_db": 0.13624750049639883
+    }
+  },
+  "retargeting_matched_instantaneous_fields": {
+    "20mm": {"target_amplitude": 898.0615778340879, "global_peak_amplitude": 899.3361676481836, "global_peak_r_m": 0.0, "global_peak_z_m": 0.019, "global_peak_over_target_db": 0.012318863025837967},
+    "50mm": {"target_amplitude": 822.4129313546391, "global_peak_amplitude": 827.34387299255, "global_peak_r_m": 0.0, "global_peak_z_m": 0.051, "global_peak_over_target_db": 0.05192249221872376},
+    "100mm": {"target_amplitude": 870.2506787017222, "global_peak_amplitude": 870.8293659548922, "global_peak_r_m": 0.0, "global_peak_z_m": 0.101, "global_peak_over_target_db": 0.005773903177521967},
+    "150mm": {"target_amplitude": 1119.5918285481118, "global_peak_amplitude": 1119.5918285481118, "global_peak_r_m": 0.0, "global_peak_z_m": 0.15, "global_peak_over_target_db": 0.0}
+  },
+  "retargeting_matched_peak_fields": {
+    "20mm": {"target_amplitude": 898.061577834089, "global_peak_amplitude": 902.2053754666032, "global_peak_r_m": 0.0, "global_peak_z_m": 0.019, "global_peak_over_target_db": 0.03998588366823788},
+    "50mm": {"target_amplitude": 822.4129313546455, "global_peak_amplitude": 835.4150704325516, "global_peak_r_m": 0.0, "global_peak_z_m": 0.053, "global_peak_over_target_db": 0.13624750049639883},
+    "100mm": {"target_amplitude": 870.2506787017259, "global_peak_amplitude": 897.6040089573773, "global_peak_r_m": 0.0, "global_peak_z_m": 0.116, "global_peak_over_target_db": 0.2688082588200201},
+    "150mm": {"target_amplitude": 1119.591828548116, "global_peak_amplitude": 1147.11355096587, "global_peak_r_m": 0.0, "global_peak_z_m": 0.17300000000000001, "global_peak_over_target_db": 0.21093380184702804}
+  }
+}
