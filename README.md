@@ -1,0 +1,94 @@
+# Single-piston transient focusing — reproducibility package
+
+This repository contains the **code and small numerical reference data needed to reproduce the numerical results and eight figures associated with the single-piston transient-focusing study**.
+
+The manuscript, third-party literature PDFs, internal research notes, exploratory experiments, and development history are intentionally not included.
+
+## Reproduce the results
+
+Requirements: **Python 3.12 or 3.13** and [`uv`](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/hightechlog/single-piston-transient-focusing-reproducibility.git
+cd single-piston-transient-focusing-reproducibility
+uv sync
+```
+
+First run the smoke test:
+
+```bash
+uv run python reproduce.py --quick
+```
+
+`--quick` uses reduced numerical settings only to verify the installation and the model/design/propagation pipeline. It is **not** a reproduction of the publication results.
+
+To reproduce the publication calculations and all eight figures:
+
+```bash
+uv run python reproduce.py --full
+```
+
+Use a specific number of worker threads if desired:
+
+```bash
+uv run python reproduce.py --full --workers 4
+```
+
+Generated files are written to:
+
+```text
+output/
+├── figures/
+│   ├── figure_01.pdf
+│   ├── ...
+│   └── figure_08.pdf
+└── summary.json
+```
+
+The expensive axisymmetric Rayleigh operator is cached under `.cache/` and can always be regenerated. Neither `output/` nor `.cache/` is version-controlled.
+
+A representative clean FULL run used approximately **430 MB peak RAM** and **18 s wall time with four worker threads**. Runtime varies with hardware and numerical libraries.
+
+## Numerical model
+
+The study uses a uniformly driven baffled circular piston with the time convention `exp(+j omega t)`. The reduced on-axis transfer function is
+
+```text
+H(z,f) = exp(-j k z) - exp[-j k sqrt(z^2+a^2)].
+```
+
+The nominal parameters are defined once in `transient_focus/parameters.py`. The published calculations use a piston radius of 50 mm, sound speed 1500 m/s, center frequency 100 kHz, and a 50–150 kHz band.
+
+Only the on-axis target channel is used to design the excitation waveform. Full axisymmetric fields are then evaluated independently with the Rayleigh integral.
+
+## Repository structure
+
+```text
+reproduce.py                    # single user entry point
+transient_focus/
+├── parameters.py               # numerical parameters used by the paper
+├── model.py                    # reduced axial piston model
+├── design.py                   # excitation-waveform construction
+├── propagation.py              # axisymmetric Rayleigh propagation
+├── figures.py                  # the eight publication figures
+└── validation.py               # comparison with canonical numerical values
+reference/
+└── reference_summary.json      # small canonical numerical reference
+tests/                          # physical/numerical regression tests
+```
+
+The code is intentionally compact: historical `expXX` modules and calculations not used by the final paper are excluded.
+
+## Tests
+
+```bash
+uv run pytest -q
+```
+
+The tests check the analytical factorization of the piston model, the scalar-delay branches used by the figures, spectrum normalization, and consistency between the axisymmetric Rayleigh calculation and the analytical axial model.
+
+## Reproducibility reference
+
+`reference/reference_summary.json` contains a small set of canonical numerical values from the calculation used for the paper. It stores numerical checks only; no manuscript content is included.
+
+A release tag, archival DOI, citation metadata, and final software license will be added when the reproducibility package is frozen for submission.
