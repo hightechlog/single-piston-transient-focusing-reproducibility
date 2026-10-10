@@ -28,3 +28,21 @@ DELAY_BATCH_SIZE = 256
 N_RHO = 32
 N_PHI = 64
 PATH_SAMPLES_PER_MIN_WAVELENGTH = 80.0
+
+# Full-field grid and temporal reconstruction used for the published figures.
+R_MIN_M = 0.0
+R_MAX_M = 60e-3
+DR_M = 1e-3
+Z_MIN_M = 5e-3
+Z_MAX_M = 180e-3
+DZ_M = 1e-3
+NOMINAL_Z_MAX_M = 95e-3
+PEAK_OVERSAMPLE = 8.0
+ZT_TIME_WINDOW_US = 45.0
+ZT_N_TIME = 601
+DRIVE_TIME_WINDOW_US = 70.0
+DRIVE_N_TIME = 2401
+FIELD_MIN_DB = -20.0
+FIELD_MAX_DB = 0.0
+CUT_MIN_DB = -15.0
+CUT_MAX_DB = 0.0
