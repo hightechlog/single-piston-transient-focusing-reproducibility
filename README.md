@@ -34,6 +34,8 @@ Use a specific number of worker threads if desired:
 uv run python reproduce.py --full --workers 4
 ```
 
+A successful FULL run also compares the generated numerical summary with the version-controlled canonical reference and ends with `REFERENCE VALIDATION: PASSED`. A material numerical difference causes the command to fail and reports the mismatched quantity.
+
 Generated files are written to:
 
 ```text
@@ -85,7 +87,7 @@ The code is intentionally compact: historical `expXX` modules and calculations n
 uv run pytest -q
 ```
 
-The tests check the analytical factorization of the piston model, the scalar-delay branches used by the figures, spectrum normalization, and consistency between the axisymmetric Rayleigh calculation and the analytical axial model.
+The tests check the analytical factorization of the piston model, the scalar-delay branches used by the figures, spectrum normalization, consistency between the axisymmetric Rayleigh calculation and the analytical axial model, and the reference-validation mechanism.
 
 ## Reproducibility reference
 
