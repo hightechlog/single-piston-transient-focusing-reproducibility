@@ -59,11 +59,13 @@ from transient_focus.propagation import (
     rayleigh_transfer_matrix,
     resolve_workers,
 )
+from transient_focus.validation import load_reference, validate_summary
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "output"
 FIGURE_DIR = OUTPUT_DIR / "figures"
 CACHE_DIR = ROOT / ".cache"
+REFERENCE_FILE = ROOT / "reference" / "reference_summary.json"
 
 
 def response_over_time(
@@ -376,10 +378,18 @@ def run_full(workers: int, rebuild_cache: bool) -> None:
         },
         "outputs": [f"figures/figure_{number:02d}.pdf" for number in range(1, 9)],
     }
+
+    validation = validate_summary(summary, load_reference(REFERENCE_FILE))
+    summary["reference_validation"] = validation
     (OUTPUT_DIR / "summary.json").write_text(
         json.dumps(summary, indent=2), encoding="utf-8"
     )
 
+    print(
+        "REFERENCE VALIDATION: PASSED "
+        f"({validation['comparisons']} checks, "
+        f"max abs error {validation['max_absolute_error']:.3e})"
+    )
     print("FULL paper reproduction: COMPLETE")
     print(f"Figures: {FIGURE_DIR}")
     print(f"Summary: {OUTPUT_DIR / 'summary.json'}")
