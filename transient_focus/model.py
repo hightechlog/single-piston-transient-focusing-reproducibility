@@ -26,6 +26,13 @@ def _positive_array(name: str, values: np.ndarray | float) -> np.ndarray:
     return array
 
 
+def _nonnegative_array(name: str, values: np.ndarray | float) -> np.ndarray:
+    array = np.asarray(values, dtype=float)
+    if np.any(~np.isfinite(array)) or np.any(array < 0.0):
+        raise ValueError(f"{name} must contain only finite non-negative values")
+    return array
+
+
 def path_difference(z: np.ndarray | float, radius: float) -> np.ndarray:
     """Return Delta R = sqrt(z^2 + a^2) - z using a stable equivalent form."""
     _positive_scalar("radius", radius)
@@ -59,7 +66,7 @@ def axial_transfer(
     """
     _positive_scalar("radius", radius)
     _positive_scalar("sound_speed", sound_speed)
-    f = np.atleast_1d(_positive_array("frequency", frequency))
+    f = np.atleast_1d(_nonnegative_array("frequency", frequency))
     z_array = np.atleast_1d(_positive_array("z", z))
 
     k = (2.0 * np.pi * f / sound_speed)[None, :]
@@ -74,7 +81,7 @@ def aperture_response(
     sound_speed: float,
 ) -> np.ndarray:
     """Return D(z,f), the axial transfer after removing the direct-path delay."""
-    f = np.atleast_1d(_positive_array("frequency", frequency))
+    f = np.atleast_1d(_nonnegative_array("frequency", frequency))
     z_array = np.atleast_1d(_positive_array("z", z))
     tau = differential_delay(z_array, radius, sound_speed)[:, None]
     return 1.0 - np.exp(-1j * 2.0 * np.pi * f[None, :] * tau)
@@ -87,7 +94,7 @@ def aperture_signature(
     sound_speed: float,
 ) -> np.ndarray:
     """Return S(z,f) = sin(pi*f*Delta tau), the signed interference signature."""
-    f = np.atleast_1d(_positive_array("frequency", frequency))
+    f = np.atleast_1d(_nonnegative_array("frequency", frequency))
     z_array = np.atleast_1d(_positive_array("z", z))
     tau = differential_delay(z_array, radius, sound_speed)[:, None]
     return np.sin(np.pi * f[None, :] * tau)
