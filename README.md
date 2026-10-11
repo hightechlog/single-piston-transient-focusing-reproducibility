@@ -109,8 +109,14 @@ The tests check the analytical factorization of the piston model, the scalar-del
 
 `reference/reference_summary.json` contains a small set of canonical numerical values from the calculation used for the paper. It stores numerical checks only; no manuscript content is included.
 
+## Archived release
+
+The frozen reproducibility snapshot used for manuscript submission is **v1.0.0**. It is permanently archived on Zenodo with the version-specific DOI:
+
+**https://doi.org/10.5281/zenodo.23292007**
+
+GitHub release: `v1.0.0 — Reproducibility snapshot`.
+
 ## License and citation
 
-The software is released under the **BSD-3-Clause** license. Citation metadata are provided in `CITATION.cff`.
-
-The final `v1.0.0` release tag and archival DOI will be added when the reproducibility package is frozen for submission.
+The software is released under the **BSD-3-Clause** license. Citation metadata, including the archived release DOI, are provided in `CITATION.cff`.
