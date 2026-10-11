@@ -63,10 +63,24 @@ The nominal parameters are defined once in `transient_focus/parameters.py`. The 
 
 Only the on-axis target channel is used to design the excitation waveform. Full axisymmetric fields are then evaluated independently with the Rayleigh integral.
 
+## Figure palette
+
+The reproduction package explicitly pins the colors used in the paper figures so that their appearance does not depend on Matplotlib defaults:
+
+- principal analytical and transient curves: black `#000000`;
+- CW reference: 45% gray (approximately `#737373`);
+- guide lines in the cut figure (`-3 dB`, `-6 dB`, and the reference position): Matplotlib C0 blue `#1F77B4`;
+- operating-band shading: 88% gray (approximately `#E0E0E0`);
+- field maps: Matplotlib `gray`, with **white = 0 dB** and **black = -20 dB**;
+- grid lines: `#B0B0B0` with the per-axis alpha set in the plotting code.
+
+The repository-level `matplotlibrc` pins the remaining presentation defaults used by these figures. Numerical calculations are unaffected by this file.
+
 ## Repository structure
 
 ```text
 reproduce.py                    # single user entry point
+matplotlibrc                    # pinned publication figure colors
 transient_focus/
 ├── parameters.py               # numerical parameters used by the paper
 ├── model.py                    # reduced axial piston model
@@ -77,6 +91,8 @@ transient_focus/
 reference/
 └── reference_summary.json      # small canonical numerical reference
 tests/                          # physical/numerical regression tests
+LICENSE                         # BSD-3-Clause
+CITATION.cff                    # software citation metadata
 ```
 
 The code is intentionally compact: historical `expXX` modules and calculations not used by the final paper are excluded.
@@ -93,4 +109,8 @@ The tests check the analytical factorization of the piston model, the scalar-del
 
 `reference/reference_summary.json` contains a small set of canonical numerical values from the calculation used for the paper. It stores numerical checks only; no manuscript content is included.
 
-A release tag, archival DOI, citation metadata, and final software license will be added when the reproducibility package is frozen for submission.
+## License and citation
+
+The software is released under the **BSD-3-Clause** license. Citation metadata are provided in `CITATION.cff`.
+
+The final `v1.0.0` release tag and archival DOI will be added when the reproducibility package is frozen for submission.
