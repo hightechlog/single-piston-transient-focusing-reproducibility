@@ -7,7 +7,9 @@ authors:
     given-names: "Luis Alberto"
     orcid: "https://orcid.org/0009-0000-9815-729X"
 repository-code: "https://github.com/hightechlog/single-piston-transient-focusing-reproducibility"
+doi: "10.5281/zenodo.23292007"
 version: "1.0.0"
+date-released: 2026-10-11
 license: "BSD-3-Clause"
 keywords:
   - acoustics
