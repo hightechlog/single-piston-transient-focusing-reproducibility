@@ -2,11 +2,19 @@
 name = "single-piston-transient-focusing-reproducibility"
 version = "0.1.0"
 description = "Reproducibility code for single-piston transient acoustic focusing."
+readme = "README.md"
+license = "BSD-3-Clause"
+authors = [
+    { name = "Luis Alberto Castellanos Rivera" },
+]
 requires-python = ">=3.12,<3.14"
 dependencies = [
     "numpy>=2.0",
     "matplotlib>=3.9",
 ]
+
+[project.urls]
+Repository = "https://github.com/hightechlog/single-piston-transient-focusing-reproducibility"
 
 [dependency-groups]
 dev = ["pytest>=8.3"]
