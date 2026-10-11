@@ -1,0 +1,12 @@
+# Publication figure palette. Numerical calculations are unaffected.
+# The guide-line blue matches Matplotlib C0 used in the submitted figures.
+axes.prop_cycle : cycler('color', ['#1F77B4'])
+axes.facecolor : white
+figure.facecolor : white
+savefig.facecolor : white
+text.color : black
+axes.edgecolor : black
+axes.labelcolor : black
+xtick.color : black
+ytick.color : black
+grid.color : #B0B0B0
