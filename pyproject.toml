@@ -1,6 +1,6 @@
 [project]
 name = "single-piston-transient-focusing-reproducibility"
-version = "0.1.0"
+version = "1.0.0"
 description = "Reproducibility code for single-piston transient acoustic focusing."
 readme = "README.md"
 license = "BSD-3-Clause"
