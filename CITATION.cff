@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Single-piston transient focusing reproducibility package"
+type: software
+authors:
+  - family-names: "Castellanos Rivera"
+    given-names: "Luis Alberto"
+    orcid: "https://orcid.org/0009-0000-9815-729X"
+repository-code: "https://github.com/hightechlog/single-piston-transient-focusing-reproducibility"
+version: "0.1.0"
+license: "BSD-3-Clause"
+keywords:
+  - acoustics
+  - baffled circular piston
+  - transient focusing
+  - waveform design
+  - reproducibility
